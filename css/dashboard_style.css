@@ -1,0 +1,161 @@
+body { font-family: Arial; }
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover { background-color: #ddd; }
+
+.tab button.active { background-color: #ccc; }
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.container {
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+a.button {
+    font-size: 14px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: transparent;
+}
+
+#addMovieMessage, 
+#addTVShowMessage,
+#addCreatorMessage {
+    color: green;
+    margin-top: 10px;
+}
+
+#addRandomMovieMessage,
+#addRandomTVShowMessage,
+#addRandomCreatorMessage {
+    color: green;
+    margin-top: 10px;
+}
+
+.left-side, .right-side {
+    float: left;
+    width: 45%;
+    padding: 10px;
+}
+
+.box {
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    padding-top: 0.5px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scrollable-table {
+    height: 150px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 2px;
+}
+
+th {
+    background-color: #384397;
+    color: white;
+}
+
+.title {
+    font-size: 15px;
+    padding: 1px;
+}
+
+.statistics-box {
+    background-color: #e7e7e7;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#Account {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#Account h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#Account p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
