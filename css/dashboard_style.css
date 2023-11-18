@@ -117,6 +117,25 @@ th {
     padding: 1px;
 }
 
+table tr td:nth-child(2) {
+    width: 260px;
+}
+
+table tr td:nth-child(3) {
+    width: 40px;
+}
+
+.remove-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #d9534f;
+}
+
+.remove-btn:hover {
+    color: #c9302c;
+}
+
 .statistics-box {
     background-color: #e7e7e7;
     padding: 10px;

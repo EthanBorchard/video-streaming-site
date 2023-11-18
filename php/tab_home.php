@@ -11,19 +11,22 @@
                         <tr>
                             <th>Title</th>
                             <th>Times Watched</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $userId = $_SESSION['userid'];
-                        $query = "SELECT Movie.Title, WatchedMovie.WatchCount FROM WatchedMovie INNER JOIN Movie ON
-                                         WatchedMovie.MovieID = Movie.MovieID WHERE WatchedMovie.UserID = '$userId'";
+                        $query = "SELECT Movie.Title, WatchedMovie.WatchCount, WatchedMovie.WatchedMovieID FROM WatchedMovie
+                                  INNER JOIN Movie ON WatchedMovie.MovieID = Movie.MovieID WHERE WatchedMovie.UserID = '$userId'";
                         $result = $conn->query($query);
 
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row['Title']) . "</td>";
                             echo "<td>" . $row['WatchCount'] . "</td>";
+                            echo "<td><button class='remove-btn' data-id='" . $row['WatchedMovieID'] . "' data-type='movie' 
+                                  aria-label='Delete'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -40,19 +43,22 @@
                         <tr>
                             <th>Title</th>
                             <th>Episodes Watched</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $userId = $_SESSION['userid'];
-                        $query = "SELECT TVShow.Title, WatchedTVShow.EpisodesWatched FROM WatchedTVShow INNER JOIN TVShow ON 
-                                         WatchedTVShow.TVShowID = TVShow.TVShowID WHERE WatchedTVShow.UserID = '$userId'";
+                        $query = "SELECT TVShow.Title, WatchedTVShow.EpisodesWatched, WatchedTVShow.WatchedTVShowID FROM WatchedTVShow 
+                                  INNER JOIN TVShow ON WatchedTVShow.TVShowID = TVShow.TVShowID WHERE WatchedTVShow.UserID = '$userId'";
                         $result = $conn->query($query);
 
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row['Title']) . "</td>";
                             echo "<td>" . $row['EpisodesWatched'] . "</td>";
+                            echo "<td><button class='remove-btn' data-id='" . $row['WatchedTVShowID'] . "' data-type='tvshow' 
+                                  aria-label='Delete'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -69,19 +75,22 @@
                         <tr>
                             <th>Name</th>
                             <th>Hours Watched</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $userId = $_SESSION['userid'];
-                        $query = "SELECT ContentCreator.Name, WatchedCreator.HoursWatched FROM WatchedCreator INNER JOIN ContentCreator ON 
-                                  WatchedCreator.CreatorID = ContentCreator.CreatorID WHERE WatchedCreator.UserID = '$userId'";
+                        $query = "SELECT ContentCreator.Name, WatchedCreator.HoursWatched, WatchedCreator.WatchedCreatorID FROM WatchedCreator 
+                                  INNER JOIN ContentCreator ON WatchedCreator.CreatorID = ContentCreator.CreatorID WHERE WatchedCreator.UserID = '$userId'";
                         $result = $conn->query($query);
 
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($row['Name']) . "</td>";
                             echo "<td>" . $row['HoursWatched'] . "</td>";
+                            echo "<td><button class='remove-btn' data-id='" . $row['WatchedCreatorID'] . "' data-type='creator'
+                                  aria-label='Delete'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -89,6 +98,26 @@
                 </table>
             </div>
         </div>
+        <script>
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                var watchedId = this.getAttribute('data-id');
+                var entryType = this.getAttribute('data-type');
+
+                $.ajax({
+                    url: './php/remove_watched_entry.php',
+                    type: 'POST',
+                    data: { 'watchedId': watchedId, 'entryType': entryType },
+                    success: function(response) {
+                        button.closest('tr').remove();
+                    },
+                    error: function() {
+                        alert('An error occurred while removing the entry.');
+                    }
+                });
+            });
+        });
+        </script>
     </div>
 
 
