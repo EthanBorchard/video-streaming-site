@@ -1,4 +1,4 @@
-<!-- Tab Home -->
+<!-- Home Tab -->
 
 <div id="Home" class="tabcontent">
     <div class="left-side">
@@ -130,26 +130,32 @@
         <div class="statistics-box">
             <?php
             $totalHours = 0;
-            $moviesQuery = "SELECT SUM(Movie.Duration/60 * WatchedMovie.WatchCount) AS TotalHours FROM WatchedMovie JOIN Movie ON 
+            $moviesQuery = "SELECT SUM(Movie.Duration/60 * WatchedMovie.WatchCount) AS TotalMovieHours FROM WatchedMovie JOIN Movie ON 
                                        WatchedMovie.MovieID = Movie.MovieID WHERE WatchedMovie.UserID = '$userId'";
             $moviesResult = $conn->query($moviesQuery);
             if ($row = $moviesResult->fetch_assoc()) {
-                $totalHours += $row['TotalHours'];
+                $movieHours = $row['TotalMovieHours'];
+                $totalHours += $movieHours;
             }
 
-            $tvShowsQuery = "SELECT SUM(TVShow.Duration/60 * WatchedTVShow.EpisodesWatched) AS TotalHours FROM WatchedTVShow JOIN TVShow ON 
+            $tvShowsQuery = "SELECT SUM(TVShow.Duration/60 * WatchedTVShow.EpisodesWatched) AS TotalTVShowHours FROM WatchedTVShow JOIN TVShow ON 
                                         WatchedTVShow.TVShowID = TVShow.TVShowID WHERE WatchedTVShow.UserID = '$userId'";
             $tvShowsResult = $conn->query($tvShowsQuery);
             if ($row = $tvShowsResult->fetch_assoc()) {
-                $totalHours += $row['TotalHours'];
+                $tvShowHours = $row['TotalTVShowHours'];
+                $totalHours += $tvShowHours;
             }
 
-            $contentCreatorsQuery = "SELECT SUM(HoursWatched) AS TotalHours FROM WatchedCreator WHERE UserID = '$userId'";
+            $contentCreatorsQuery = "SELECT SUM(HoursWatched) AS TotalCreatorHours FROM WatchedCreator WHERE UserID = '$userId'";
             $contentCreatorsResult = $conn->query($contentCreatorsQuery);
             if ($row = $contentCreatorsResult->fetch_assoc()) {
-                $totalHours += $row['TotalHours'];
+                $contentCreatorHours = $row['TotalCreatorHours'];
+                $totalHours += $contentCreatorHours;
             }
-
+            echo "<div>Movies: " . floor($movieHours) . " hours</div>";
+            echo "<div>TV Shows: " . floor($tvShowHours) . " hours</div>";
+            echo "<div>Content Creators: " . floor($contentCreatorHours) . " hours</div>";
+            echo "<div>_______________" . "</div>";
             echo "<div>Total Hours: " . floor($totalHours) . "</div>";
             ?>
         </div>
