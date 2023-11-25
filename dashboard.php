@@ -29,12 +29,14 @@
         <button class="tablinks" onclick="openTab(event, 'AddMovies')">Add Movies</button>
         <button class="tablinks" onclick="openTab(event, 'AddTVShows')">Add TV Shows</button>
         <button class="tablinks" onclick="openTab(event, 'AddContentCreators')">Add Content Creators</button>
+        <button class="tablinks" onclick="openTab(event, 'Recommended')">Recommended</button>
         <button class="tablinks" onclick="openTab(event, 'Account')">Account</button>
     </div>
 
     <?php include('./php/movie/tab_movies.php'); ?>
     <?php include('./php/tvshow/tab_tvshows.php'); ?>
     <?php include('./php/creator/tab_creators.php'); ?>
+    <?php include('./php/tab_recommended.php'); ?>
     <?php include('./php/tab_account.php'); ?>
     <?php include('./php/tab_home.php'); ?>
 
