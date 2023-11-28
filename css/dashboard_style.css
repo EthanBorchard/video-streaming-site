@@ -199,3 +199,18 @@ table tr td:nth-child(3) {
 .recommended-item p {
     margin: 5px 0;
 }
+
+#followingTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#followingTable th, #followingTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#followingTable th {
+    background-color: #384397;
+}
