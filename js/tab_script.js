@@ -13,4 +13,14 @@ function openTab(evt, tabName) {
 
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+
+    localStorage.setItem('lastOpenedTab', tabName);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var lastOpenedTab = localStorage.getItem('lastOpenedTab');
+
+    if (lastOpenedTab && document.getElementById(lastOpenedTab)) {
+        openTab(null, lastOpenedTab);
+    }
+});
