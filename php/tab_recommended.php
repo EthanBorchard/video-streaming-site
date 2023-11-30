@@ -51,8 +51,57 @@
             </script>
         </div>
     </div>
-    <!-- Placeholder for the right side of the Recommended tab -->
+
     <div class="right-side">
-        <!-- Future content -->
+        <div class="box">
+            <h3>What My Following is Watching</h3>
+            <div id="followingActivity"></div>
+            <script>
+            function loadFollowingActivity() {
+                $.ajax({
+                    url: './php/fetch_following_activity.php',
+                    type: 'GET',
+                    success: function(response) {
+                        var activities = JSON.parse(response);
+                        var container = $('#followingActivity');
+                        container.empty();
+
+                        activities.forEach(function(activity) {
+                            var htmlContent = '<div class="user-activity">';
+
+                            htmlContent += '<h4>' + activity.userName + '\'s Top Picks:</h4>';
+
+                            if (activity.topMovie) {
+                                htmlContent += '<div class="top-movie">' +
+                                            '<strong>Movie:</strong> ' + activity.topMovie.Title + '<br>' +
+                                            'Released: ' + activity.topMovie.Year + ', Genre: ' + activity.topMovie.Genre + 
+                                            ', Duration: ' + activity.topMovie.Duration + ' mins' +
+                                            '</div>';
+                            }
+
+                            if (activity.topTVShow) {
+                                htmlContent += '<div class="top-tvshow">' +
+                                            '<strong>TV Show:</strong> ' + activity.topTVShow.Title + '<br>' +
+                                            'Released: ' + activity.topTVShow.Year + ', Genre: ' + activity.topTVShow.Genre + 
+                                            ', Duration: ' + activity.topTVShow.Duration + ' mins per episode' +
+                                            '</div>';
+                            }
+
+                            if (activity.topCreator) {
+                                htmlContent += '<div class="top-contentcreator">' +
+                                            '<strong>Content Creator:</strong> ' + activity.topCreator.Name + '<br>' +
+                                            'Followers: ' + activity.topCreator.Followers +
+                                            '</div>';
+                            }
+
+                            htmlContent += '</div>';
+                            container.append(htmlContent);
+                        });
+                    }
+                });
+            }
+            loadFollowingActivity();
+            </script>
+        </div>
     </div>
 </div>

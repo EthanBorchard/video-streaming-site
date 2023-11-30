@@ -214,3 +214,25 @@ table tr td:nth-child(3) {
 #followingTable th {
     background-color: #384397;
 }
+
+.user-activity {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.user-activity h4 {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.user-activity p {
+    margin: 6px;
+    font-size: 14px;
+}
+
+.user-activity div {
+    margin: 6px;
+}
