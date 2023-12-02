@@ -9,6 +9,9 @@ if ($userId && $userId == $_SESSION['userid']) {
     $conn->query("DELETE FROM WatchedTVShow WHERE UserID = '$userId'");
     $conn->query("DELETE FROM WatchedCreator WHERE UserID = '$userId'");
 
+    $conn->query("DELETE FROM Followers WHERE FollowerUserID = '$userId'");
+    $conn->query("DELETE FROM Followers WHERE FollowingUserID = '$userId'");
+
     $conn->query("DELETE FROM User WHERE UserID = '$userId'");
 
     session_destroy();
