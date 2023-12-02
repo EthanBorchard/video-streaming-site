@@ -28,18 +28,42 @@
             });
 
             $(document).on('click', '.follow-btn', function() {
-                var followedUserId = $(this).data('userid');
+                var userId = $(this).data('userid');
                 var button = $(this);
 
                 $.ajax({
                     url: './php/follow_user.php',
                     type: 'POST',
-                    data: { 'followedUserId': followedUserId },
+                    data: { 'followedUserId': userId },
                     success: function(response) {
-                        if (response === 'already_following') {
-                            alert('Already following ' + button.data('username'));
+                        if (response === 'success') {
+                            button.prop('disabled', true).text('Followed');
                         } else {
-                            button.prop('disabled', true).text('Following');
+                            alert('Error following user.');
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.unfollow-btn', function() {
+                var userId = $(this).data('userid');
+                var button = $(this);
+
+                $.ajax({
+                    url: './php/unfollow_user.php',
+                    type: 'POST',
+                    data: { 'followingUserId': userId },
+                    success: function(response) {
+                        if (response === 'success') {
+                            $('#followingTable').find('tr').each(function() {
+                                if ($(this).find('.unfollow-btn').data('userid') == userId) {
+                                    $(this).remove();
+                                }
+                            });
+
+                            button.prop('disabled', true).text('Unfollowed');
+                        } else {
+                            alert('Error unfollowing user.');
                         }
                     }
                 });
