@@ -236,3 +236,83 @@ table tr td:nth-child(3) {
 .user-activity div {
     margin: 6px;
 }
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto auto;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.badge-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: gray;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.badge-name {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+#badge-first-timer.earned {background-image: linear-gradient(to right, #4facfe, #00f2fe);}
+#badge-novice-watcher.earned {background-image: linear-gradient(to right, #85ffbd, #fffb7d);}
+#badge-regular-watcher.earned {background-image: linear-gradient(to right, #f794a4, #fdd6bd);}
+#badge-binge-watcher.earned {background-image: linear-gradient(to right, #a18cd1, #fbc2eb);}
+#badge-genre-explorer.earned {background-image: linear-gradient(to right, #0a5c36, #1bfd9c);}
+#badge-movie-buff.earned {background-image: linear-gradient(to right, #FCF6F5FF, #42EADDFF);}
+#badge-series-master.earned {background-image: linear-gradient(to right, #FCF6F5FF, #D01C1FFF);}
+#badge-content-king.earned {background-image: linear-gradient(to right, #FCF6F5FF, #603F83FF);}
+#badge-social-butterfly.earned {background-image: linear-gradient(to right, #FEE715FF, #F2AA4CFF);}
+#badge-influencer.earned {background-image: linear-gradient(to right, #F875AA, #AEDEFC);}
+
+.badge-description {
+    visibility: hidden;
+    width: 120px;
+    background-color: #e5e5e5;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.badge-container:hover .badge-description {
+    visibility: visible;
+    opacity: 1;
+}
+
+.badge-description::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
