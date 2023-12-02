@@ -8,7 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $country = $conn->real_escape_string($_POST['country']);
 
-    $sql = "INSERT INTO User (Username, Password, Email, Country) VALUES ('$username', '$password', '$email', '$country')";
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO User (Username, Password, Email, Country) VALUES ('$username', '$hashedPassword', '$email', '$country')";
 
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT UserID, Username FROM User WHERE Username = '$username'";

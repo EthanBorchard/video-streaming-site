@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if ($password === $row['Password']) {
+        if (password_verify($password, $row['Password'])) {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['UserID'];
