@@ -8,7 +8,7 @@
             <script>
             function fetchMovieRecommendations() {
                 $.ajax({
-                    url: './php/movie/fetch_recommended_movies.php',
+                    url: './php/recommended/fetch_recommended_movies.php',
                     type: 'GET',
                     success: function(response) {
                         var movies = JSON.parse(response);
@@ -32,7 +32,7 @@
             <script>
             function fetchTVShowRecommendations() {
                 $.ajax({
-                    url: './php/tvshow/fetch_recommended_tvshows.php',
+                    url: './php/recommended/fetch_recommended_tvshows.php',
                     type: 'GET',
                     success: function(response) {
                         var tvshows = JSON.parse(response);
@@ -59,7 +59,7 @@
             <script>
             function loadFollowingActivity() {
                 $.ajax({
-                    url: './php/fetch_following_activity.php',
+                    url: './php/recommended/fetch_following_activity.php',
                     type: 'GET',
                     success: function(response) {
                         var activities = JSON.parse(response);

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './db.php';
+include '../db.php';
 
 $userId = $_SESSION['userid'];
 $badgesEarned = checkBadgeCriteria($userId, $conn);

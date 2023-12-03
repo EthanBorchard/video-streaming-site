@@ -1,5 +1,5 @@
 <?php
-include '../db.php';
+include '../../db.php';
 
 $searchText = $conn->real_escape_string($_POST['query']);
 $query = "SELECT CreatorID, Name FROM ContentCreator WHERE Name LIKE '$searchText%' LIMIT 10"; 

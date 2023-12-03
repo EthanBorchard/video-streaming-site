@@ -28,7 +28,7 @@
             var searchText = $(this).val();
             if (searchText != '') {
                 $.ajax({
-                    url: './php/creator/fetch_creators.php',
+                    url: './php/add_watched/creator/fetch_creators.php',
                     method: 'post',
                     data: {query: searchText},
                     success: function(response) {
@@ -58,7 +58,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: './php/creator/add_creator.php',
+                url: './php/add_watched/creator/add_creator.php',
                 type: 'post',
                 data: $(this).serialize(),
                 success: function(response) {
@@ -77,7 +77,7 @@
 
         $('#addRandomCreator').click(function() {
             $.ajax({
-                url: './php/creator/add_random_creator.php',
+                url: './php/add_watched/creator/add_random_creator.php',
                 type: 'post',
                 data: {},
                 success: function(response) {

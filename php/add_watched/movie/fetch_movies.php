@@ -1,5 +1,5 @@
 <?php
-include '../db.php';
+include '../../db.php';
 
 $searchText = $conn->real_escape_string($_POST['query']);
 $query = "SELECT MovieID, Title FROM Movie WHERE Title LIKE '$searchText%' LIMIT 10"; 

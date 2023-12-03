@@ -105,7 +105,7 @@
                 var entryType = this.getAttribute('data-type');
 
                 $.ajax({
-                    url: './php/remove_watched_entry.php',
+                    url: './php/home/remove_watched_entry.php',
                     type: 'POST',
                     data: { 'watchedId': watchedId, 'entryType': entryType },
                     success: function(response) {

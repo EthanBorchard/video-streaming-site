@@ -28,7 +28,7 @@
             var searchText = $(this).val();
             if (searchText != '') {
                 $.ajax({
-                    url: './php/movie/fetch_movies.php',
+                    url: './php/add_watched/movie/fetch_movies.php',
                     method: 'post',
                     data: {query: searchText},
                     success: function(response) {
@@ -59,7 +59,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: './php/movie/add_movie.php',
+                url: './php/add_watched/movie/add_movie.php',
                 type: 'post',
                 data: $(this).serialize(),
                 success: function(response) {
@@ -78,7 +78,7 @@
 
         $('#addRandomMovie').click(function() {
             $.ajax({
-                url: './php/movie/add_random_movie.php',
+                url: './php/add_watched/movie/add_random_movie.php',
                 type: 'post',
                 data: {},
                 success: function(response) {

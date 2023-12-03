@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './db.php';
+include '../db.php';
 
 $followerUserId = $_SESSION['userid'];
 $followedUserId = $_POST['followedUserId'];

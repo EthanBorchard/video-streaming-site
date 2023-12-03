@@ -28,7 +28,7 @@
             var searchText = $(this).val();
             if (searchText != '') {
                 $.ajax({
-                    url: './php/tvshow/fetch_tvshows.php',
+                    url: './php/add_watched/tvshow/fetch_tvshows.php',
                     method: 'post',
                     data: {query: searchText},
                     success: function(response) {
@@ -58,7 +58,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: './php/tvshow/add_tvshow.php',
+                url: './php/add_watched/tvshow/add_tvshow.php',
                 type: 'post',
                 data: $(this).serialize(),
                 success: function(response) {
@@ -78,7 +78,7 @@
 
         $('#addRandomTVShow').click(function() {
             $.ajax({
-                url: './php/tvshow/add_random_tvshow.php',
+                url: './php/add_watched/tvshow/add_random_tvshow.php',
                 type: 'post',
                 data: {},
                 success: function(response) {

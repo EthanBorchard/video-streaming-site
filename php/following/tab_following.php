@@ -18,7 +18,7 @@
                 }
 
                 $.ajax({
-                    url: './php/fetch_users.php',
+                    url: './php/following/fetch_users.php',
                     type: 'POST',
                     data: { 'searchText': searchText },
                     success: function(response) {
@@ -32,7 +32,7 @@
                 var button = $(this);
 
                 $.ajax({
-                    url: './php/follow_user.php',
+                    url: './php/following/follow_user.php',
                     type: 'POST',
                     data: { 'followedUserId': userId },
                     success: function(response) {
@@ -50,7 +50,7 @@
                 var button = $(this);
 
                 $.ajax({
-                    url: './php/unfollow_user.php',
+                    url: './php/following/unfollow_user.php',
                     type: 'POST',
                     data: { 'followingUserId': userId },
                     success: function(response) {
@@ -89,7 +89,7 @@
         <script>
         function loadFollowingUsers() {
             $.ajax({
-                url: './php/fetch_following.php',
+                url: './php/following/fetch_following.php',
                 type: 'GET',
                 success: function(response) {
                     var users = JSON.parse(response);

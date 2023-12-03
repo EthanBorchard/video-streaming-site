@@ -66,7 +66,7 @@
     <script>
     function loadBadges() {
         $.ajax({
-            url: './php/milestones_check.php',
+            url: './php/account/milestones_check.php',
             type: 'GET',
             success: function(response) {
                 var badgesEarned = JSON.parse(response);
@@ -113,7 +113,7 @@
     document.getElementById('deleteUserButton').addEventListener('click', function() {
         if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
             $.ajax({
-                url: './php/delete_user.php',
+                url: './php/account/delete_user.php',
                 type: 'POST',
                 data: { userId: '<?php echo $_SESSION['userid']; ?>' },
                 success: function(response) {

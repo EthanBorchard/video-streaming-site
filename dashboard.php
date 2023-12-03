@@ -35,14 +35,14 @@
         <button class="tablinks" onclick="openTab(event, 'Account')">Account</button>
     </div>
 
-    <?php include('./php/movie/tab_movies.php'); ?>
-    <?php include('./php/tvshow/tab_tvshows.php'); ?>
-    <?php include('./php/creator/tab_creators.php'); ?>
-    <?php include('./php/tab_recommended.php'); ?>
-    <?php include('./php/tab_following.php'); ?>
+    <?php include('./php/add_watched/movie/tab_movies.php'); ?>
+    <?php include('./php/add_watched/tvshow/tab_tvshows.php'); ?>
+    <?php include('./php/add_watched/creator/tab_creators.php'); ?>
+    <?php include('./php/recommended/tab_recommended.php'); ?>
+    <?php include('./php/following/tab_following.php'); ?>
     <?php include('./php/wrapped/tab_wrapped.php'); ?>
-    <?php include('./php/tab_account.php'); ?>
-    <?php include('./php/tab_home.php'); ?>
+    <?php include('./php/account/tab_account.php'); ?>
+    <?php include('./php/home/tab_home.php'); ?>
 
     <div class="footer">
         <a href="./index.php" class="button">Back</a>

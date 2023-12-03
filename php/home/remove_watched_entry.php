@@ -1,5 +1,5 @@
 <?php
-include './db.php';
+include '../db.php';
 session_start();
 
 if (isset($_POST['watchedId'], $_POST['entryType']) && isset($_SESSION['userid'])) {
