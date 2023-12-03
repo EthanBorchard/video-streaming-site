@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: linear-gradient(to right, #1a67aa, #00ccd6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ body {
 }
 
 .login-form, .registration-form {
-    background-color: white;
+    background-color: #f1f1f1;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -33,12 +33,12 @@ button {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #007bff;
+    background-color: #fa2a55;
     color: white;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #a91734;
 }
