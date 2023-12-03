@@ -31,6 +31,7 @@
         <button class="tablinks" onclick="openTab(event, 'AddContentCreators')">Add Content Creators</button>
         <button class="tablinks" onclick="openTab(event, 'Recommended')">Recommended</button>
         <button class="tablinks" onclick="openTab(event, 'Following')">Following</button>
+        <button class="tablinks" onclick="openTab(event, 'Wrapped')">Wrapped</button>
         <button class="tablinks" onclick="openTab(event, 'Account')">Account</button>
     </div>
 
@@ -39,6 +40,7 @@
     <?php include('./php/creator/tab_creators.php'); ?>
     <?php include('./php/tab_recommended.php'); ?>
     <?php include('./php/tab_following.php'); ?>
+    <?php include('./php/wrapped/tab_wrapped.php'); ?>
     <?php include('./php/tab_account.php'); ?>
     <?php include('./php/tab_home.php'); ?>
 
