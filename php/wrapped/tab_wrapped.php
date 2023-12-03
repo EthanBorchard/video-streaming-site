@@ -110,6 +110,12 @@
             <br></br>
             <h1 id="totalHoursStreamed">Total Hours Streamed in 2023: </h1>
             <h1 id="totalHoursNumber"></h1>
+            <div class="social-share-buttons">
+                <h4>Share On:</h4>
+                <a href="#" id="shareTwitter" target="_blank">Twitter</a>
+                <a href="#" id="shareFacebook" target="_blank">Facebook</a>
+                <a href="#" id="shareEmail">Email</a>
+            </div>
 
             <script>
             function loadTotalHoursStreamed() {
@@ -117,11 +123,33 @@
                 .then(response => response.json())
                 .then(totalHours => {
                     document.getElementById('totalHoursNumber').textContent = totalHours.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    updateSocialShareLinks(totalHours);
+                    updateEmailShareLink(totalHours);
                 })
                 .catch(error => console.error('Error:', error));
             }
 
             loadTotalHoursStreamed();
+            </script>
+
+            <script>
+            function updateSocialShareLinks(totalHours) {
+                const shareMessage = encodeURIComponent(`Video Streaming Wrapped - My total hours streamed in 2023: ${totalHours}`);
+
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${shareMessage}`;
+                document.getElementById('shareTwitter').href = twitterUrl;
+
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=${shareMessage}`;
+                document.getElementById('shareFacebook').href = facebookUrl;
+            }
+
+            function updateEmailShareLink(totalHours) {
+                const subject = encodeURIComponent('Video Streaming Wrapped - My 2023 in Review');
+                const body = encodeURIComponent(`Check out my Video Streaming Wrapped for 2023! I streamed a total of ${totalHours} hours this year!`);
+
+                const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+                document.getElementById('shareEmail').href = mailtoLink;
+            }
             </script>
         </div>
 
