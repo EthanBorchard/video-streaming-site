@@ -21,9 +21,17 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // First Timer Badge:
-    $movieQuery = "SELECT COUNT(*) as count FROM WatchedMovie WHERE UserID = '$userId'";
-    $tvShowQuery = "SELECT COUNT(*) as count FROM WatchedTVShow WHERE UserID = '$userId'";
-    $contentCreatorQuery = "SELECT COUNT(*) as count FROM WatchedCreator WHERE UserID = '$userId'";
+    $movieQuery = "SELECT COUNT(*) as count 
+                   FROM WatchedMovie 
+                   WHERE UserID = '$userId'";
+
+    $tvShowQuery = "SELECT COUNT(*) as count 
+                    FROM WatchedTVShow 
+                    WHERE UserID = '$userId'";
+
+    $contentCreatorQuery = "SELECT COUNT(*) as count 
+                            FROM WatchedCreator 
+                            WHERE UserID = '$userId'";
 
     $movieResult = $conn->query($movieQuery);
     $tvShowResult = $conn->query($tvShowQuery);
@@ -39,7 +47,8 @@ function checkBadgeCriteria($userId, $conn) {
     // Novice Watcher, Regular Watcher, and Binge Watcher Badges:
     $totalHours = 0;
 
-    $moviesQuery = "SELECT SUM(Movie.Duration/60 * WatchedMovie.WatchCount) AS TotalMovieHours FROM WatchedMovie 
+    $moviesQuery = "SELECT SUM(Movie.Duration/60 * WatchedMovie.WatchCount) AS TotalMovieHours 
+                    FROM WatchedMovie 
                     JOIN Movie ON WatchedMovie.MovieID = Movie.MovieID 
                     WHERE WatchedMovie.UserID = '$userId'";
     $moviesResult = $conn->query($moviesQuery);
@@ -47,7 +56,8 @@ function checkBadgeCriteria($userId, $conn) {
         $totalHours += $row['TotalMovieHours'];
     }
 
-    $tvShowsQuery = "SELECT SUM(TVShow.Duration/60 * WatchedTVShow.EpisodesWatched) AS TotalTVShowHours FROM WatchedTVShow 
+    $tvShowsQuery = "SELECT SUM(TVShow.Duration/60 * WatchedTVShow.EpisodesWatched) AS TotalTVShowHours 
+                     FROM WatchedTVShow 
                      JOIN TVShow ON WatchedTVShow.TVShowID = TVShow.TVShowID 
                      WHERE WatchedTVShow.UserID = '$userId'";
     $tvShowsResult = $conn->query($tvShowsQuery);
@@ -55,7 +65,9 @@ function checkBadgeCriteria($userId, $conn) {
         $totalHours += $row['TotalTVShowHours'];
     }
 
-    $creatorsQuery = "SELECT SUM(HoursWatched) AS TotalCreatorHours FROM WatchedCreator WHERE UserID = '$userId'";
+    $creatorsQuery = "SELECT SUM(HoursWatched) AS TotalCreatorHours 
+                      FROM WatchedCreator 
+                      WHERE UserID = '$userId'";
     $contentCreatorsResult = $conn->query($creatorsQuery);
     if ($row = $contentCreatorsResult->fetch_assoc()) {
         $totalHours += $row['TotalCreatorHours'];
@@ -74,10 +86,12 @@ function checkBadgeCriteria($userId, $conn) {
 
     // Genre Explorer Badge:
     $genres = [];
-    $movieGenresQuery = "SELECT DISTINCT Genre FROM Movie 
+    $movieGenresQuery = "SELECT DISTINCT Genre 
+                         FROM Movie 
                          JOIN WatchedMovie ON Movie.MovieID = WatchedMovie.MovieID 
                          WHERE WatchedMovie.UserID = '$userId'";
-    $tvShowGenresQuery = "SELECT DISTINCT Genre FROM TVShow 
+    $tvShowGenresQuery = "SELECT DISTINCT Genre 
+                          FROM TVShow 
                           JOIN WatchedTVShow ON TVShow.TVShowID = WatchedTVShow.TVShowID 
                           WHERE WatchedTVShow.UserID = '$userId'";
 
@@ -100,7 +114,9 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // Movie Buff Badge:
-    $movieCountQuery = "SELECT COUNT(DISTINCT MovieID) as movieCount FROM WatchedMovie WHERE UserID = '$userId'";
+    $movieCountQuery = "SELECT COUNT(DISTINCT MovieID) as movieCount 
+                        FROM WatchedMovie 
+                        WHERE UserID = '$userId'";
     $movieCountResult = $conn->query($movieCountQuery);
     if ($movieCountResult->fetch_assoc()['movieCount'] >= 20) {
         $badges['movieBuff'] = true;
@@ -108,7 +124,9 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // Series Master Badge:
-    $tvShowCountQuery = "SELECT COUNT(DISTINCT TVShowID) as tvShowCount FROM WatchedTVShow WHERE UserID = '$userId'";
+    $tvShowCountQuery = "SELECT COUNT(DISTINCT TVShowID) as tvShowCount 
+                         FROM WatchedTVShow 
+                         WHERE UserID = '$userId'";
     $tvShowCountResult = $conn->query($tvShowCountQuery);
     if ($tvShowCountResult->fetch_assoc()['tvShowCount'] >= 20) {
         $badges['seriesMaster'] = true;
@@ -116,7 +134,9 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // Content King Badge:
-    $creatorCountQuery = "SELECT COUNT(DISTINCT CreatorID) as creatorCount FROM WatchedCreator WHERE UserID = '$userId'";
+    $creatorCountQuery = "SELECT COUNT(DISTINCT CreatorID) as creatorCount 
+                          FROM WatchedCreator 
+                          WHERE UserID = '$userId'";
     $creatorCountResult = $conn->query($creatorCountQuery);
     if ($creatorCountResult->fetch_assoc()['creatorCount'] >= 20) {
         $badges['contentKing'] = true;
@@ -124,7 +144,9 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // Social Butterfly Badge:
-    $followingCountQuery = "SELECT COUNT(DISTINCT FollowingUserID) as followingCount FROM Followers WHERE FollowerUserID = '$userId'";
+    $followingCountQuery = "SELECT COUNT(DISTINCT FollowingUserID) as followingCount
+                            FROM Followers 
+                            WHERE FollowerUserID = '$userId'";
     $followingCountResult = $conn->query($followingCountQuery);
     if ($followingCountResult->fetch_assoc()['followingCount'] >= 10) {
         $badges['socialButterfly'] = true;
@@ -132,7 +154,9 @@ function checkBadgeCriteria($userId, $conn) {
 
 
     // Influencer Badge:
-    $followerCountQuery = "SELECT COUNT(DISTINCT FollowerUserID) as followerCount FROM Followers WHERE FollowingUserID = '$userId'";
+    $followerCountQuery = "SELECT COUNT(DISTINCT FollowerUserID) as followerCount 
+                           FROM Followers 
+                           WHERE FollowingUserID = '$userId'";
     $followerCountResult = $conn->query($followerCountQuery);
     if ($followerCountResult->fetch_assoc()['followerCount'] >= 10) {
         $badges['influencer'] = true;

@@ -2,7 +2,10 @@
 include '../../db.php';
 
 $searchText = $conn->real_escape_string($_POST['query']);
-$query = "SELECT MovieID, Title FROM Movie WHERE Title LIKE '$searchText%' LIMIT 10"; 
+$query = "SELECT MovieID, Title 
+          FROM Movie 
+          WHERE Title LIKE '$searchText%' 
+          LIMIT 10"; 
 $result = $conn->query($query);
 
 while ($row = $result->fetch_assoc()) {

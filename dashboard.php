@@ -14,13 +14,14 @@
     session_start();
 
     $userId = $_SESSION['userid'];
-    $query = "SELECT Email, Country FROM User WHERE UserID = '$userId'";
+    $query = "SELECT Email, Country 
+              FROM User 
+              WHERE UserID = '$userId'";
     $result = $conn->query($query);
 
     if ($row = $result->fetch_assoc()) {
         $email = $row['Email'];
         $country = $row['Country'];
-    } else {
     }
     ?>
 

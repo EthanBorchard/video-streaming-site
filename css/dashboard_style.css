@@ -37,7 +37,7 @@ body {
 }
 
 a.button {
-    font-size: 14px;
+    font-size: 16px;
     padding: 8px 12px;
     background-color: #fa2a55;
     color: white;
@@ -89,23 +89,23 @@ a.button:hover {
 
 .left-side, .right-side {
     float: left;
-    width: 45%;
+    width: 48%;
     padding: 10px;
 }
 
 .box {
     background-color: #ebedf3;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-top: 0.5px;
     padding-right: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     padding-left: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .scrollable-table {
-    height: 150px;
+    height: 155px;
     overflow-y: auto;
 }
 
@@ -122,7 +122,8 @@ table, th, td {
 
 th {
     background-color: #003b6d;
-    color: white;
+    color: #fffcb0;
+    padding-left: 5px;
 }
 
 td {
@@ -130,8 +131,10 @@ td {
 }
 
 .title {
-    font-size: 15px;
+    font-size: 16px;
     padding: 1px;
+    margin-top: 8px;
+    margin-bottom: 0px;
 }
 
 table tr td:nth-child(2) {
@@ -157,7 +160,12 @@ table tr td:nth-child(3) {
     background-color: white;
     padding: 10px;
     margin-top: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
+}
+
+.statistics-box div {
+    padding: 3px;
 }
 
 #Account {
@@ -202,7 +210,8 @@ table tr td:nth-child(3) {
 }
 
 .box h3 {
-    margin-bottom: 10px;
+    margin-top: 6px;
+    margin-bottom: 4px;
 }
 
 .recommended-item {
@@ -214,7 +223,7 @@ table tr td:nth-child(3) {
 }
 
 .recommended-item p {
-    margin: 5px 0;
+    margin: 1px 0;
 }
 
 #followingTable {

@@ -63,6 +63,7 @@
             <div class="badge-description">Earned when 10 users follow you</div>
         </div>
     </div>
+    
     <script>
     function loadBadges() {
         $.ajax({

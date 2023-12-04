@@ -23,7 +23,9 @@ if (isset($_POST['watchedId'], $_POST['entryType']) && isset($_SESSION['userid']
     }
     $watchedIdType = $table . 'ID';
 
-    $conn->query("DELETE FROM $table WHERE $watchedIdType = '$watchedId' AND UserID = '$userId'");
+    $conn->query("DELETE FROM $table 
+                  WHERE $watchedIdType = '$watchedId' 
+                  AND UserID = '$userId'");
 
 } else {
     echo "Invalid request";

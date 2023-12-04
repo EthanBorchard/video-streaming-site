@@ -5,14 +5,20 @@ include '../db.php';
 $searchText = $_POST['searchText'] ?? '';
 $currentUserId = $_SESSION['userid'];
 
-$query = "SELECT UserID, Username FROM User WHERE Username LIKE '%$searchText%' 
-          AND UserID != '$currentUserId' LIMIT 6";
+$query = "SELECT UserID, Username 
+          FROM User 
+          WHERE Username LIKE '%$searchText%' 
+          AND UserID != '$currentUserId' 
+          LIMIT 6";
 $result = $conn->query($query);
 
 while ($row = $result->fetch_assoc()) {
     $userId = $row['UserID'];
 
-    $followCheckQuery = "SELECT * FROM Followers WHERE FollowerUserID = '$currentUserId' AND FollowingUserID = '$userId'";
+    $followCheckQuery = "SELECT * 
+                         FROM Followers 
+                         WHERE FollowerUserID = '$currentUserId' 
+                         AND FollowingUserID = '$userId'";
     $followCheckResult = $conn->query($followCheckQuery);
     $isFollowing = $followCheckResult->num_rows > 0;
 

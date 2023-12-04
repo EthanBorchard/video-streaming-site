@@ -33,8 +33,8 @@
         </div>
 
         <div class="slide" id="slide3" style="background: linear-gradient(to right, #6ee2ff, #ffbffe);">
-            <h2 id="topMovieTitle">Top Movie</h2>
-            <img id="topMovieImage" src="./php/wrapped/images/movie.jpg" alt="Top Movie Image" style="max-width: 75%; height: auto;">
+            <h2 id="topMovieTitle">Top Movie: </h2>
+            <img id="topMovieImage" src="" alt="Top Movie Image" style="max-width: 75%; height: auto;">
             <h3 id="topMovieWatchCount">Times Watched: </h3>
 
             <script>
@@ -49,6 +49,9 @@
                         document.getElementById('topMovieTitle').textContent = 'Top Movie: Not Available';
                         document.getElementById('topMovieWatchCount').textContent = 'Times Watched: N/A';
                     }
+                    if (movie.MovieID == 80) {
+                        document.getElementById('topMovieImage').src = "./php/wrapped/images/movie.jpg";
+                    } 
                 })
                 .catch(error => console.error('Error:', error));
             }
@@ -58,7 +61,7 @@
 
         <div class="slide" id="slide4" style="background: linear-gradient(to right, #70f295, #ecff72);">
             <h2 id="topTVShowTitle">Top TV Show</h2>
-            <img id="topTVShowImage" src="./php/wrapped/images/tvshow.jpg" alt="Top TV Show Image" style="max-width: 75%; height: auto;">
+            <img id="topTVShowImage" src="" alt="Top TV Show Image" style="max-width: 75%; height: auto;">
             <h3 id="topTVShowWatchCount">Episodes Watched: </h3>
 
             <script>
@@ -73,6 +76,9 @@
                         document.getElementById('topTVShowTitle').textContent = 'Top TV Show: Not Available';
                         document.getElementById('topTVShowWatchCount').textContent = 'Episodes Watched: N/A';
                     }
+                    if (TVShow.TVShowID == 2) {
+                        document.getElementById('topTVShowImage').src = "./php/wrapped/images/tvshow.jpg";
+                    } 
                 })
                 .catch(error => console.error('Error:', error));
             }
@@ -82,7 +88,7 @@
 
         <div class="slide" id="slide5" style="background: linear-gradient(to right, #f2709c, #ff9472);">
             <h2 id="topCreatorName">Top Creator</h2>
-            <img id="topCreatorImage" src="./php/wrapped/images/contentcreator.jpg" alt="Top Creator Image" style="max-width: 75%; height: auto;">
+            <img id="topCreatorImage" src="" alt="Top Creator Image" style="max-width: 75%; height: auto;">
             <h3 id="topCreatorWatchCount">Hours Watched: </h3>
 
             <script>
@@ -97,6 +103,9 @@
                         document.getElementById('topCreatorName').textContent = 'Top Creator: Not Available';
                         document.getElementById('topCreatorWatchCount').textContent = 'Hours Watched: N/A';
                     }
+                    if (creator.CreatorID == 304) {
+                        document.getElementById('topCreatorImage').src = "./php/wrapped/images/contentcreator.jpg";
+                    } 
                 })
                 .catch(error => console.error('Error:', error));
             }

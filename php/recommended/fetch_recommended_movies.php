@@ -9,7 +9,8 @@ $topGenresQuery = "SELECT Movie.Genre, COUNT(*) as genre_count
                    JOIN Movie ON WatchedMovie.MovieID = Movie.MovieID 
                    WHERE WatchedMovie.UserID = '$userId' 
                    GROUP BY Movie.Genre 
-                   ORDER BY genre_count DESC LIMIT 2";
+                   ORDER BY genre_count 
+                   DESC LIMIT 2";
 $topGenresResult = $conn->query($topGenresQuery);
 
 $topGenres = [];
@@ -24,7 +25,8 @@ foreach ($topGenres as $genre) {
     $movieQuery = "SELECT Movie.Title, Movie.Genre, StreamingService.Name as ServiceName 
                    FROM Movie 
                    JOIN StreamingService ON Movie.ServiceID = StreamingService.ServiceID 
-                   WHERE Movie.Genre LIKE '%$genre%' AND Movie.MovieID NOT IN 
+                   WHERE Movie.Genre LIKE '%$genre%' 
+                   AND Movie.MovieID NOT IN 
                    (SELECT MovieID FROM WatchedMovie WHERE UserID = '$userId') 
                    LIMIT 3";
 

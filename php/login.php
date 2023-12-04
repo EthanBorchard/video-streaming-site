@@ -5,7 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
 
-    $sql = "SELECT UserID, Username, Password FROM User WHERE Username = '$username'";
+    $sql = "SELECT UserID, Username, Password 
+            FROM User 
+            WHERE Username = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -15,8 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['UserID'];
             $_SESSION['username'] = $username;
-
-            $_SESSION['welcome_message'] = "Welcome back, " . htmlspecialchars($username) . "!";
+            
             header("Location: ../dashboard.php");
             exit();
         } else {

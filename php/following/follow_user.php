@@ -5,7 +5,9 @@ include '../db.php';
 $followerUserId = $_SESSION['userid'];
 $followedUserId = $_POST['followedUserId'];
 
-$checkQuery = "SELECT * FROM Followers WHERE FollowerUserID = '$followerUserId' 
+$checkQuery = "SELECT * 
+               FROM Followers 
+               WHERE FollowerUserID = '$followerUserId' 
                AND FollowingUserID = '$followedUserId'";
 $checkResult = $conn->query($checkQuery);
 if ($checkResult->num_rows > 0) {

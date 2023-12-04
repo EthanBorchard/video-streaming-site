@@ -10,7 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO User (Username, Password, Email, Country) VALUES ('$username', '$hashedPassword', '$email', '$country')";
+    $sql = "INSERT INTO User (Username, Password, Email, Country) 
+            VALUES ('$username', '$hashedPassword', '$email', '$country')";
 
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT UserID, Username FROM User WHERE Username = '$username'";
@@ -21,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['userid'] = $row['UserID'];
         $_SESSION['username'] = $username;
 
-        $_SESSION['success_message'] = "New user created successfully!";
         header("Location: ../dashboard.php");
         exit();
     } else {

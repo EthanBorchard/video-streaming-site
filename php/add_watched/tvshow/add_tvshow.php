@@ -11,18 +11,25 @@ $userId = $_SESSION['userid'];
 $TVShowId = $conn->real_escape_string($_POST['TVShowId']);
 $episodesWatched = $conn->real_escape_string($_POST['EpisodesWatched']);
 
-$checkQuery = "SELECT * FROM WatchedTVShow WHERE UserID = '$userId' AND TVShowID = '$TVShowId'";
+$checkQuery = "SELECT * 
+               FROM WatchedTVShow 
+               WHERE UserID = '$userId' 
+               AND TVShowID = '$TVShowId'";
 $checkResult = $conn->query($checkQuery);
 
 if ($checkResult->num_rows > 0) {
-    $updateQuery = "UPDATE WatchedTVShow SET EpisodesWatched = '$episodesWatched' WHERE UserID = '$userId' AND TVShowID = '$TVShowId'";
+    $updateQuery = "UPDATE WatchedTVShow 
+                    SET EpisodesWatched = '$episodesWatched' 
+                    WHERE UserID = '$userId' 
+                    AND TVShowID = '$TVShowId'";
     if ($conn->query($updateQuery) === TRUE) {
         echo "Episodes watched updated successfully";
     } else {
         echo "Error updating record: " . $conn->error;
     }
 } else {
-    $insertQuery = "INSERT INTO WatchedTVShow (UserID, TVShowID, EpisodesWatched) VALUES ('$userId', '$TVShowId', '$episodesWatched')";
+    $insertQuery = "INSERT INTO WatchedTVShow (UserID, TVShowID, EpisodesWatched) 
+                    VALUES ('$userId', '$TVShowId', '$episodesWatched')";
     if ($conn->query($insertQuery) === TRUE) {
         echo "New watched TV Show entry added successfully";
     } else {

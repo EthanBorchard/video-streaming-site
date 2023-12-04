@@ -1,6 +1,7 @@
 <!-- Following Tab -->
 
 <div id="Following" class="tabcontent">
+    
     <div class="left-side">
         <div class="box">
             <h3>Find Users to Follow</h3>
@@ -71,6 +72,7 @@
         });
         </script>
     </div>
+
     <div class="right-side">
         <div class="box">
             <h3>Users I'm Following</h3>

@@ -2,6 +2,7 @@
 
 <div id="Recommended" class="tabcontent">
     <div class="left-side">
+
         <div class="box">
             <h3>Recommended Movies</h3>
             <div id="recommendedMovies"></div>
@@ -26,6 +27,7 @@
             fetchMovieRecommendations();
             </script>
         </div>
+
         <div class="box">
             <h3>Recommended TV Shows</h3>
             <div id="recommendedTVShows"></div>
@@ -52,7 +54,9 @@
         </div>
     </div>
 
+
     <div class="right-side">
+
         <div class="box">
             <h3>What My Following is Watching</h3>
             <div id="followingActivity"></div>
@@ -103,5 +107,6 @@
             loadFollowingActivity();
             </script>
         </div>
+        
     </div>
 </div>
